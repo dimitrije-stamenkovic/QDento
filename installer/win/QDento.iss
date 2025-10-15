@@ -3,8 +3,7 @@
 
 #define MyAppName "QDento"
 #define MyAppVersion "1.0.0"
-#define MyAppPublisher "SalveoDent"
-#define MyAppURL "https://dinodent.bg"
+#define MyAppPublisher "Hristo Konstantinov"
 #define MyAppExeName "QDento.exe"
 
 [Setup]
@@ -15,9 +14,6 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppPublisherURL={#MyAppURL}
-AppSupportURL={#MyAppURL}
-AppUpdatesURL={#MyAppURL}
 DefaultDirName={commonpf64}/{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
