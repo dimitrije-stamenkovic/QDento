@@ -151,7 +151,7 @@ CalendarWidget::CalendarWidget(QWidget* parent) : QCalendarWidget(parent) {
 void CalendarWidget::setDateLabelText(int year, int month) {
     yearButton->setText(QStringLiteral("%1").arg(year));
 
-    QLocale l(QLocale::Bulgarian);
+    QLocale l;
     monthButton->setText(l.monthName(month, QLocale::ShortFormat));
 }
 
@@ -200,7 +200,7 @@ void CalendarWidget::monthMenuPopup() {
                               ? (monthCount + 12) : ((monthCount) > 12)
                                     ? (monthCount % 12) : (monthCount);
 
-            QLocale l(QLocale::Bulgarian);
+            QLocale l;
 
             monthList[monthTableCount]->setText(l.monthName(actualMonth, QLocale::ShortFormat));
             if (monthTableCount == 12) {
