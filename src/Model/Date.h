@@ -1,0 +1,56 @@
+#pragma once
+
+#include <string>
+
+class Date
+{
+
+    static int monthDays[12];
+
+public:
+    int day{ 1 };
+    int month{ 1 };
+    int year{ 1900 };
+
+    Date();
+    Date(int day, int month, int year);
+    Date(const std::string& iso8601);
+    
+
+    bool isInitialized() const;
+    //all my troubles seem so far away
+    Date yesterday() const;
+    Date tomorrow() const;
+
+    bool isDefault() const;
+
+    std::string to8601() const;
+    std::string toLocalFormat() const;
+    bool isFromPreviousMonths(const Date& other) const;
+    static Date currentDate();
+
+    static int currentDay();
+    static int currentMonth();
+    static int currentYear();
+
+    static bool isLeapYear(int year);
+    int getMaxDayOfMonth() const;
+    static int getMaxDayOfMonth(int month, int year);
+
+    Date getMaxDateOfMonth() const;
+
+    bool isOrthodoxEasternWeek() const;
+    bool isTheSameMonthAs(const Date& date) const;
+    bool isToday() const;
+    bool isSameDayInTheYear(const Date& current = Date::currentDate()) const;
+    int getAge(const Date& currentDate = Date::currentDate());
+
+    bool operator < (const Date& other) const;
+    bool operator > (const Date& other) const;
+    bool operator == (const Date& other) const;
+    bool operator != (const Date& other) const;
+    bool operator >= (const Date& other) const;
+    bool operator <= (const Date& other) const;
+   
+};
+

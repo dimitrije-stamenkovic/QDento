@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E065FC77-B4BF-48DF-8C99-892FC04E6A0E}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;network;widgets;</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;network;widgets;</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutDir>$(SolutionDir)\installer\files</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)include\sqlite3;$(SolutionDir)include\json</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)include\sqlite3;$(SolutionDir)include\json</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="include\json\jsoncpp.cpp" />
+    <ClCompile Include="include\sqLite3\sqlite3.c" />
+    <ClCompile Include="src\Database\Database.cpp" />
+    <ClCompile Include="src\Database\DbAppointment.cpp" />
+    <ClCompile Include="src\Database\DbDentalVisit.cpp" />
+    <ClCompile Include="src\Database\DbBrowser.cpp" />
+    <ClCompile Include="src\Database\DbDentist.cpp" />
+    <ClCompile Include="src\Database\DbDiagnosis.cpp" />
+    <ClCompile Include="src\Database\DbInvoice.cpp" />
+    <ClCompile Include="src\Database\DbNotes.cpp" />
+    <ClCompile Include="src\Database\DbNotification.cpp" />
+    <ClCompile Include="src\Database\DbPatient.cpp" />
+    <ClCompile Include="src\Database\DbPatientSummary.cpp" />
+    <ClCompile Include="src\Database\DbPerio.cpp" />
+    <ClCompile Include="src\Database\DbCompany.cpp" />
+    <ClCompile Include="src\Database\DbProcedure.cpp" />
+    <ClCompile Include="src\Database\DbUpdater.cpp" />
+    <ClCompile Include="src\GlobalSettings.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Model\CalendarStructs.cpp" />
+    <ClCompile Include="src\Model\Date.cpp" />
+    <ClCompile Include="src\Model\Dental\PerioStatistic.cpp" />
+    <ClCompile Include="src\Model\Dental\PerioToothData.cpp" />
+    <ClCompile Include="src\Model\Dental\Procedure.cpp" />
+    <ClCompile Include="src\Model\Dental\ProcedureContainer.cpp" />
+    <ClCompile Include="src\Model\Dental\Snapshot.cpp" />
+    <ClCompile Include="src\Model\Dental\TimeFrame.cpp" />
+    <ClCompile Include="src\Model\Dental\Tooth.cpp" />
+    <ClCompile Include="src\Model\Dental\ToothContainer.cpp" />
+    <ClCompile Include="src\Model\Dental\ToothUtils.cpp" />
+    <ClCompile Include="src\Model\Financial\BusinessOperation.cpp" />
+    <ClCompile Include="src\Model\Financial\Invoice.cpp" />
+    <ClCompile Include="src\Model\Financial\Issuer.cpp" />
+    <ClCompile Include="src\Model\Financial\Recipient.cpp" />
+    <ClCompile Include="src\Model\FreeFunctions.cpp" />
+    <ClCompile Include="src\Model\Parser.cpp" />
+    <ClCompile Include="src\Model\Patient.cpp" />
+    <ClCompile Include="src\Model\PlainTable.cpp" />
+    <ClCompile Include="src\Model\Time.cpp" />
+    <ClCompile Include="src\Model\User.cpp" />
+    <ClCompile Include="src\Model\Validators\CommonValidators.cpp" />
+    <ClCompile Include="src\Model\Validators\DateValidator.cpp" />
+    <ClCompile Include="src\Model\Validators\FinancialValidator.cpp" />
+    <ClCompile Include="src\Presenter\BrowserPresenter.cpp" />
+    <ClCompile Include="src\Presenter\ButtonSurfaceMatrix.cpp" />
+    <ClCompile Include="src\Presenter\CalendarPresenter.cpp" />
+    <ClCompile Include="src\Presenter\CheckModel.cpp" />
+    <ClCompile Include="src\Presenter\DetailedStatusPresenter.cpp" />
+    <ClCompile Include="src\Presenter\DoctorDialogPresenter.cpp" />
+    <ClCompile Include="src\Presenter\FinancialPresenter.cpp" />
+    <ClCompile Include="src\Presenter\VisitPresenter.cpp" />
+    <ClCompile Include="src\Presenter\LoginPresenter.cpp" />
+    <ClCompile Include="src\Presenter\MainPresenter.cpp" />
+    <ClCompile Include="src\Presenter\NewDocPresenter.cpp" />
+    <ClCompile Include="src\Presenter\PatientDialogPresenter.cpp" />
+    <ClCompile Include="src\Presenter\PatientHistoryPresenter.cpp" />
+    <ClCompile Include="src\Presenter\PatientInfoPresenter.cpp" />
+    <ClCompile Include="src\Presenter\PerioPresenter.cpp" />
+    <ClCompile Include="src\Presenter\ProcedureCreator.cpp" />
+    <ClCompile Include="src\Presenter\ProcedureDialogPresenter.cpp" />
+    <ClCompile Include="src\Presenter\ProcedureEditorPresenter.cpp" />
+    <ClCompile Include="src\Presenter\ProcedureListPresenter.cpp" />
+    <ClCompile Include="src\Presenter\RecipientPresenter.cpp" />
+    <ClCompile Include="src\Presenter\SettingsMainPresenter.cpp" />
+    <ClCompile Include="src\Presenter\SurfacePanelPresenter.cpp" />
+    <ClCompile Include="src\Presenter\TabInstance.cpp" />
+    <ClCompile Include="src\Presenter\TabPresenter.cpp" />
+    <ClCompile Include="src\Resources.cpp" />
+    <ClCompile Include="src\View\CommonIcon.cpp" />
+    <ClCompile Include="src\View\GlobalFunctions.cpp" />
+    <ClCompile Include="src\View\Graphics\CalendarViewData.cpp" />
+    <ClCompile Include="src\View\Graphics\ControlPanelPolygon.cpp" />
+    <ClCompile Include="src\View\Graphics\CPTooth.cpp" />
+    <ClCompile Include="src\View\Graphics\GraphicsView.cpp" />
+    <ClCompile Include="src\View\Graphics\HexagonGraphicsItem.cpp" />
+    <ClCompile Include="src\View\Graphics\PaintHint.cpp" />
+    <ClCompile Include="src\View\Graphics\PerioChartItem.cpp" />
+    <ClCompile Include="src\View\Graphics\PerioGraphicsButton.cpp" />
+    <ClCompile Include="src\View\Graphics\PerioScene.cpp" />
+    <ClCompile Include="src\View\Graphics\SelectionBox.cpp" />
+    <ClCompile Include="src\View\Graphics\SpriteRect.cpp" />
+    <ClCompile Include="src\View\Graphics\SpriteSheets.cpp" />
+    <ClCompile Include="src\View\Graphics\TeethBuccalScene.cpp" />
+    <ClCompile Include="src\View\Graphics\TeethLingualScene.cpp" />
+    <ClCompile Include="src\View\Graphics\TeethViewScene.cpp" />
+    <ClCompile Include="src\View\Graphics\ToothGraphicsItem.cpp" />
+    <ClCompile Include="src\View\Graphics\ToothPainter.cpp" />
+    <ClCompile Include="src\View\Graphics\Zodiac.cpp" />
+    <ClCompile Include="src\View\Interfaces\AbstractDateEdit.cpp" />
+    <ClCompile Include="src\View\Interfaces\AbstractLineEdit.cpp" />
+    <ClCompile Include="src\View\Interfaces\AbstractUIElement.cpp" />
+    <ClCompile Include="src\View\Printer.cpp" />
+    <ClCompile Include="src\View\SubWidgets\ContextMenu.cpp" />
+    <ClCompile Include="src\View\SubWidgets\ControlPanel.cpp" />
+    <ClCompile Include="src\View\SubWidgets\DsnMenu.cpp" />
+    <ClCompile Include="src\View\SubWidgets\PatientTileInfo.cpp" />
+    <ClCompile Include="src\View\SubWidgets\PerioStatisticView.cpp" />
+    <ClCompile Include="src\View\SubWidgets\PerioSummary.cpp" />
+    <ClCompile Include="src\View\SubWidgets\ProcedureInput.cpp" />
+    <ClCompile Include="src\View\SubWidgets\ProcedureListView.cpp" />
+    <ClCompile Include="src\View\SubWidgets\SnapshotViewer.cpp" />
+    <ClCompile Include="src\View\SubWidgets\SurfacePanel.cpp" />
+    <ClCompile Include="src\View\SubWidgets\TabTitle.cpp" />
+    <ClCompile Include="src\View\TableModels\BusinessOperationModel.cpp" />
+    <ClCompile Include="src\View\TableModels\NameFilterProxyModel.cpp" />
+    <ClCompile Include="src\View\TableModels\NotificationTableModel.cpp" />
+    <ClCompile Include="src\View\TableModels\PlainTableModel.cpp" />
+    <ClCompile Include="src\View\TableModels\ProcedureSelectModel.cpp" />
+    <ClCompile Include="src\View\TableModels\ProcedureTableModel.cpp" />
+    <ClCompile Include="src\View\TableModels\ProcedureTemplateModel.cpp" />
+    <ClCompile Include="src\View\TableModels\QProcedure.cpp" />
+    <ClCompile Include="src\View\Theme.cpp" />
+    <ClCompile Include="src\View\uiComponents\AutoCompleteLineEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\BigPushButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\CalendarTable.cpp" />
+    <ClCompile Include="src\View\uiComponents\CalendarWidget.cpp" />
+    <ClCompile Include="src\View\uiComponents\ColorPicker.cpp" />
+    <ClCompile Include="src\View\uiComponents\ComboBox.cpp" />
+    <ClCompile Include="src\View\uiComponents\CustomButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\CustomDateTimeEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\DateEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\FinancialTileButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\FurcationWidget.cpp" />
+    <ClCompile Include="src\View\uiComponents\HalfRoundedButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\HoverButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\IconButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\LeadingZeroSpinBox.cpp" />
+    <ClCompile Include="src\View\uiComponents\LineEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\ListTable.cpp" />
+    <ClCompile Include="src\View\uiComponents\NameEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\NotesEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\PerioButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\PerioSpinBox.cpp" />
+    <ClCompile Include="src\View\uiComponents\PerioStateButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\PerioTable.cpp" />
+    <ClCompile Include="src\View\uiComponents\PixmapLabel.cpp" />
+    <ClCompile Include="src\View\uiComponents\RightClickButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\ShortcutTile.cpp" />
+    <ClCompile Include="src\View\uiComponents\SpinBox.cpp" />
+    <ClCompile Include="src\View\uiComponents\StatusButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\StatusMultiButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\TableView.cpp" />
+    <ClCompile Include="src\View\uiComponents\TextBrowser.cpp" />
+    <ClCompile Include="src\View\uiComponents\TextEdit.cpp" />
+    <ClCompile Include="src\View\uiComponents\TileButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\ToothButton.cpp" />
+    <ClCompile Include="src\View\uiComponents\UserButton.cpp" />
+    <ClCompile Include="src\View\Widgets\AboutDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\BrowserDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\BusinessOperationDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\ButtonDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\CalendarEventDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\CalendarView.cpp" />
+    <ClCompile Include="src\View\Widgets\DetailedStatus.cpp" />
+    <ClCompile Include="src\View\Widgets\DoctorSettingsDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\FinancialView.cpp" />
+    <ClCompile Include="src\View\Widgets\InputDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\VisitView.cpp" />
+    <ClCompile Include="src\View\Widgets\LoginView.cpp" />
+    <ClCompile Include="src\View\ModalDialogBuilder.cpp" />
+    <ClCompile Include="src\View\Widgets\MultilineDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\NewDocDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\NotificationDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\NotificationListDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\PatientFormDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\PatientHistoryDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\PerioStatusView.cpp" />
+    <ClCompile Include="src\View\Widgets\PerioView.cpp" />
+    <ClCompile Include="src\View\Widgets\ProcedureDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\ProcedureEditDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\ProcedureElementDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\ProcedurePrintSelectDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\QDento.cpp" />
+    <ClCompile Include="src\View\Widgets\RecipientEditView.cpp" />
+    <ClCompile Include="src\View\Widgets\SaveDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\SettingsDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\SplashScreen.cpp" />
+    <ClCompile Include="src\View\Widgets\TableViewDialog.cpp" />
+    <ClCompile Include="src\View\Widgets\TabView.cpp" />
+    <ClCompile Include="src\View\Widgets\WelcomeWidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\json\json-forwards.h" />
+    <ClInclude Include="include\json\json.h" />
+    <ClInclude Include="include\sqLite3\sqlite3.h" />
+    <ClInclude Include="src\Database\Database.h" />
+    <ClInclude Include="src\Database\DbAppointment.h" />
+    <ClInclude Include="src\Database\DbDentalVisit.h" />
+    <ClInclude Include="src\Database\DbBrowser.h" />
+    <ClInclude Include="src\Database\DbDentist.h" />
+    <ClInclude Include="src\Database\DbDiagnosis.h" />
+    <ClInclude Include="src\Database\DbInvoice.h" />
+    <ClInclude Include="src\Database\DbNotes.h" />
+    <ClInclude Include="src\Database\DbNotification.h" />
+    <ClInclude Include="src\Database\DbPatient.h" />
+    <ClInclude Include="src\Database\DbPatientSummary.h" />
+    <ClInclude Include="src\Database\DbPerio.h" />
+    <ClInclude Include="src\Database\DbCompany.h" />
+    <ClInclude Include="src\Database\DbProcedure.h" />
+    <ClInclude Include="src\Database\DbUpdater.h" />
+    <ClInclude Include="src\GlobalSettings.h" />
+    <ClInclude Include="src\Model\CalendarStructs.h" />
+    <ClInclude Include="src\Model\Date.h" />
+    <ClInclude Include="src\Model\Dental\DentalVisit.h" />
+    <ClInclude Include="src\Model\Dental\BridgeAlgorithms.h" />
+    <ClInclude Include="src\Model\Dental\Dental.h" />
+    <ClInclude Include="src\Model\Dental\Notification.h" />
+    <ClInclude Include="src\Model\Dental\PerioStatistic.h" />
+    <ClInclude Include="src\Model\Dental\PerioStatus.h" />
+    <ClInclude Include="src\Model\Dental\PerioToothData.h" />
+    <ClInclude Include="src\Model\Dental\Procedure.h" />
+    <ClInclude Include="src\Model\Dental\ProcedureContainer.h" />
+    <ClInclude Include="src\Model\Dental\ProcedureListElement.h" />
+    <ClInclude Include="src\Model\Dental\Snapshot.h" />
+    <ClInclude Include="src\Model\Dental\TimeFrame.h" />
+    <ClInclude Include="src\Model\Dental\Tooth.h" />
+    <ClInclude Include="src\Model\Dental\ToothContainer.h" />
+    <ClInclude Include="src\Model\Dental\ToothIndex.h" />
+    <ClInclude Include="src\Model\Dental\ToothUtils.h" />
+    <ClInclude Include="src\Model\Financial\BusinessOperation.h" />
+    <ClInclude Include="src\Model\Financial\FinancialEnums.h" />
+    <ClInclude Include="src\Model\Financial\Invoice.h" />
+    <ClInclude Include="src\Model\Financial\Issuer.h" />
+    <ClInclude Include="src\Model\Financial\Recipient.h" />
+    <ClInclude Include="src\Model\FreeFunctions.h" />
+    <ClInclude Include="src\Model\NumenclatureTemplate.h" />
+    <ClInclude Include="src\Model\Parser.h" />
+    <ClInclude Include="src\Model\Patient.h" />
+    <ClInclude Include="src\Model\PlainTable.h" />
+    <ClInclude Include="src\Model\Settings.h" />
+    <ClInclude Include="src\Model\TableRows.h" />
+    <ClInclude Include="src\Model\TableStructs.h" />
+    <ClInclude Include="src\Model\TabType.h" />
+    <ClInclude Include="src\Model\Time.h" />
+    <ClInclude Include="src\Model\User.h" />
+    <ClInclude Include="src\Model\UserStructs.h" />
+    <ClInclude Include="src\Model\Validators\AbstractValidator.h" />
+    <ClInclude Include="src\Model\Validators\CommonValidators.h" />
+    <ClInclude Include="src\Model\Validators\DateValidator.h" />
+    <ClInclude Include="src\Model\Validators\FinancialValidator.h" />
+    <ClInclude Include="src\Presenter\BrowserPresenter.h" />
+    <ClInclude Include="src\Presenter\ButtonSurfaceMatrix.h" />
+    <ClInclude Include="src\Presenter\CalendarPresenter.h" />
+    <ClInclude Include="src\Presenter\CheckModel.h" />
+    <ClInclude Include="src\Presenter\DetailedStatusPresenter.h" />
+    <ClInclude Include="src\Presenter\DoctorDialogPresenter.h" />
+    <ClInclude Include="src\Presenter\FinancialPresenter.h" />
+    <ClInclude Include="src\Presenter\InputEnums.h" />
+    <ClInclude Include="src\Presenter\VisitPresenter.h" />
+    <ClInclude Include="src\Presenter\LoginPresenter.h" />
+    <ClInclude Include="src\Presenter\MainPresenter.h" />
+    <ClInclude Include="src\Presenter\NewDocPresenter.h" />
+    <ClInclude Include="src\Presenter\PatientDialogPresenter.h" />
+    <ClInclude Include="src\Presenter\PatientHistoryPresenter.h" />
+    <ClInclude Include="src\Presenter\PatientInfoPresenter.h" />
+    <ClInclude Include="src\Presenter\PerioPresenter.h" />
+    <ClInclude Include="src\Presenter\ProcedureCreator.h" />
+    <ClInclude Include="src\Presenter\ProcedureDialogPresenter.h" />
+    <ClInclude Include="src\Presenter\ProcedureEditorPresenter.h" />
+    <ClInclude Include="src\Presenter\ProcedureListPresenter.h" />
+    <ClInclude Include="src\Presenter\RecipientPresenter.h" />
+    <ClInclude Include="src\Presenter\SettingsMainPresenter.h" />
+    <ClInclude Include="src\Presenter\SurfacePanelPresenter.h" />
+    <ClInclude Include="src\Presenter\TabInstance.h" />
+    <ClInclude Include="src\Presenter\TabPresenter.h" />
+    <ClInclude Include="src\Resources.h" />
+    <ClInclude Include="src\Version.h" />
+    <ClInclude Include="src\View\CommonIcon.h" />
+    <ClInclude Include="src\View\GlobalFunctions.h" />
+    <ClInclude Include="src\View\Graphics\CalendarViewData.h" />
+    <ClInclude Include="src\View\Graphics\ControlPanelPolygon.h" />
+    <ClInclude Include="src\View\Graphics\CPTooth.h" />
+    <ClInclude Include="src\View\Graphics\HexagonGraphicsItem.h" />
+    <ClInclude Include="src\View\Graphics\PaintHint.h" />
+    <ClInclude Include="src\View\Graphics\PerioChartItem.h" />
+    <ClInclude Include="src\View\Graphics\PerioGraphicsButton.h" />
+    <ClInclude Include="src\View\Graphics\PerioScene.h" />
+    <ClInclude Include="src\View\Graphics\SelectionBox.h" />
+    <ClInclude Include="src\View\Graphics\SpriteRect.h" />
+    <ClInclude Include="src\View\Graphics\SpriteSheets.h" />
+    <ClInclude Include="src\View\Graphics\ToothGraphicsItem.h" />
+    <ClInclude Include="src\View\Graphics\ToothPainter.h" />
+    <ClInclude Include="src\View\Graphics\ToothSprite.h" />
+    <ClInclude Include="src\View\Graphics\Zodiac.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractComboBox.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractDateEdit.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractLabel.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractLineEdit.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractRangeEdit.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractSpinBox.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractSurfaceSelector.h" />
+    <ClInclude Include="src\View\Interfaces\AbstractUIElement.h" />
+    <ClInclude Include="src\View\ModalDialogBuilder.h" />
+    <ClInclude Include="src\View\Printer.h" />
+    <ClInclude Include="src\View\TableModels\BusinessOperationModel.h" />
+    <ClInclude Include="src\View\TableModels\NameFilterProxyModel.h" />
+    <ClInclude Include="src\View\TableModels\QProcedure.h" />
+    <ClInclude Include="src\View\Theme.h" />
+    <ClInclude Include="src\View\uiComponents\AutoCompleteLineEdit.h" />
+    <ClInclude Include="src\View\uiComponents\FinancialTileButton.h" />
+    <ClInclude Include="src\View\uiComponents\MouseWheelGuard.h" />
+    <ClInclude Include="src\View\uiComponents\NotesEdit.h" />
+    <ClInclude Include="src\View\uiComponents\ShortcutTile.h" />
+    <ClInclude Include="src\View\uiComponents\TileButton.h" />
+    <ClInclude Include="src\View\Widgets\GlobalWidgets.h" />
+    <QtMoc Include="src\View\Widgets\ProcedureElementDialog.h" />
+    <QtMoc Include="src\View\Widgets\MultilineDialog.h" />
+    <ClInclude Include="src\View\Widgets\SplashScreen.h" />
+    <ClInclude Include="src\View\Widgets\ToothUi.h" />
+    <QtMoc Include="src\View\Widgets\WelcomeWidget.h" />
+    <QtMoc Include="src\View\Widgets\TabView.h" />
+    <QtMoc Include="src\View\Widgets\TableViewDialog.h" />
+    <QtMoc Include="src\View\Widgets\SettingsDialog.h" />
+    <QtMoc Include="src\View\Widgets\SaveDialog.h" />
+    <QtMoc Include="src\View\Widgets\RecipientEditView.h" />
+    <QtMoc Include="src\View\Widgets\QDento.h" />
+    <QtMoc Include="src\View\Widgets\ProcedurePrintSelectDialog.h" />
+    <QtMoc Include="src\View\Widgets\ProcedureEditDialog.h" />
+    <QtMoc Include="src\View\Widgets\ProcedureDialog.h" />
+    <QtMoc Include="src\View\Widgets\PerioView.h" />
+    <QtMoc Include="src\View\Widgets\PerioStatusView.h" />
+    <QtMoc Include="src\View\Widgets\PatientHistoryDialog.h" />
+    <QtMoc Include="src\View\Widgets\PatientFormDialog.h" />
+    <QtMoc Include="src\View\Widgets\NotificationListDialog.h" />
+    <QtMoc Include="src\View\Widgets\NotificationDialog.h" />
+    <QtMoc Include="src\View\Widgets\NewDocDialog.h" />
+    <QtMoc Include="src\View\Widgets\LoginView.h" />
+    <QtMoc Include="src\View\Widgets\VisitView.h" />
+    <QtMoc Include="src\View\Widgets\InputDialog.h" />
+    <QtMoc Include="src\View\Widgets\FinancialView.h" />
+    <QtMoc Include="src\View\Widgets\DoctorSettingsDialog.h" />
+    <QtMoc Include="src\View\Widgets\DetailedStatus.h" />
+    <QtMoc Include="src\View\Widgets\CalendarView.h" />
+    <QtMoc Include="src\View\Widgets\CalendarEventDialog.h" />
+    <QtMoc Include="src\View\Widgets\ButtonDialog.h" />
+    <QtMoc Include="src\View\Widgets\BusinessOperationDialog.h" />
+    <QtMoc Include="src\View\Widgets\BrowserDialog.h" />
+    <QtMoc Include="src\View\Widgets\AboutDialog.h" />
+    <QtMoc Include="src\View\uiComponents\UserButton.h" />
+    <QtMoc Include="src\View\uiComponents\ToothButton.h" />
+    <QtMoc Include="src\View\uiComponents\TextEdit.h" />
+    <QtMoc Include="src\View\uiComponents\TextBrowser.h" />
+    <QtMoc Include="src\View\uiComponents\TableView.h" />
+    <QtMoc Include="src\View\uiComponents\StatusMultiButton.h" />
+    <QtMoc Include="src\View\uiComponents\StatusButton.h" />
+    <QtMoc Include="src\View\uiComponents\SpinBox.h" />
+    <QtMoc Include="src\View\uiComponents\RightClickButton.h" />
+    <QtMoc Include="src\View\uiComponents\PixmapLabel.h" />
+    <QtMoc Include="src\View\uiComponents\PerioTable.h" />
+    <QtMoc Include="src\View\uiComponents\PerioStateButton.h" />
+    <QtMoc Include="src\View\uiComponents\PerioSpinBox.h" />
+    <QtMoc Include="src\View\uiComponents\PerioButton.h" />
+    <QtMoc Include="src\View\uiComponents\NameEdit.h" />
+    <QtMoc Include="src\View\uiComponents\ListTable.h" />
+    <QtMoc Include="src\View\uiComponents\LineEdit.h" />
+    <QtMoc Include="src\View\uiComponents\LeadingZeroSpinBox.h" />
+    <QtMoc Include="src\View\uiComponents\IconButton.h" />
+    <QtMoc Include="src\View\uiComponents\HoverButton.h" />
+    <QtMoc Include="src\View\uiComponents\HalfRoundedButton.h" />
+    <QtMoc Include="src\View\uiComponents\FurcationWidget.h" />
+    <QtMoc Include="src\View\uiComponents\DateEdit.h" />
+    <QtMoc Include="src\View\uiComponents\CustomDateTimeEdit.h" />
+    <QtMoc Include="src\View\uiComponents\CustomButton.h" />
+    <QtMoc Include="src\View\uiComponents\ComboBox.h" />
+    <QtMoc Include="src\View\uiComponents\ColorPicker.h" />
+    <QtMoc Include="src\View\uiComponents\CalendarWidget.h" />
+    <QtMoc Include="src\View\uiComponents\CalendarTable.h" />
+    <QtMoc Include="src\View\uiComponents\BigPushButton.h" />
+    <QtMoc Include="src\View\TableModels\ProcedureTemplateModel.h" />
+    <QtMoc Include="src\View\TableModels\ProcedureTableModel.h" />
+    <QtMoc Include="src\View\TableModels\ProcedureSelectModel.h" />
+    <QtMoc Include="src\View\TableModels\PlainTableModel.h" />
+    <QtMoc Include="src\View\TableModels\NotificationTableModel.h" />
+    <QtMoc Include="src\View\SubWidgets\TabTitle.h" />
+    <QtMoc Include="src\View\SubWidgets\SurfacePanel.h" />
+    <QtMoc Include="src\View\SubWidgets\SnapshotViewer.h" />
+    <QtMoc Include="src\View\SubWidgets\ProcedureListView.h" />
+    <QtMoc Include="src\View\SubWidgets\ProcedureInput.h" />
+    <QtMoc Include="src\View\SubWidgets\PerioSummary.h" />
+    <QtMoc Include="src\View\SubWidgets\PerioStatisticView.h" />
+    <QtMoc Include="src\View\SubWidgets\PatientTileInfo.h" />
+    <QtMoc Include="src\View\SubWidgets\DsnMenu.h" />
+    <QtMoc Include="src\View\SubWidgets\ControlPanel.h" />
+    <QtMoc Include="src\View\SubWidgets\ContextMenu.h" />
+    <QtMoc Include="src\View\Graphics\TeethViewScene.h" />
+    <QtMoc Include="src\View\Graphics\TeethLingualScene.h" />
+    <QtMoc Include="src\View\Graphics\TeethBuccalScene.h" />
+    <QtMoc Include="src\View\Graphics\GraphicsView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="resources\Resource.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="src\View\SubWidgets\ControlPanel.ui" />
+    <QtUic Include="src\View\SubWidgets\PatientTileInfo.ui" />
+    <QtUic Include="src\View\SubWidgets\PerioStatisticView.ui" />
+    <QtUic Include="src\View\SubWidgets\PerioSummary.ui" />
+    <QtUic Include="src\View\SubWidgets\ProcedureInput.ui" />
+    <QtUic Include="src\View\SubWidgets\ProcedureListView.ui" />
+    <QtUic Include="src\View\SubWidgets\SnapshotViewer.ui" />
+    <QtUic Include="src\View\SubWidgets\SurfacePanel.ui" />
+    <QtUic Include="src\View\SubWidgets\TabTitle.ui" />
+    <QtUic Include="src\View\Widgets\AboutDialog.ui" />
+    <QtUic Include="src\View\Widgets\BrowserDialog.ui" />
+    <QtUic Include="src\View\Widgets\BusinessOperationDialog.ui" />
+    <QtUic Include="src\View\Widgets\ButtonDialog.ui" />
+    <QtUic Include="src\View\Widgets\CalendarEventDialog.ui" />
+    <QtUic Include="src\View\Widgets\CalendarView.ui" />
+    <QtUic Include="src\View\Widgets\DetailedStatus.ui" />
+    <QtUic Include="src\View\Widgets\DoctorSettingsDialog.ui" />
+    <QtUic Include="src\View\Widgets\FinancialView.ui" />
+    <QtUic Include="src\View\Widgets\InputDialog.ui" />
+    <QtUic Include="src\View\Widgets\VisitView.ui" />
+    <QtUic Include="src\View\Widgets\LoginView.ui" />
+    <QtUic Include="src\View\Widgets\MultilineDialog.ui" />
+    <QtUic Include="src\View\Widgets\NewDocDialog.ui" />
+    <QtUic Include="src\View\Widgets\NotificationDialog.ui" />
+    <QtUic Include="src\View\Widgets\NotificationListDialog.ui" />
+    <QtUic Include="src\View\Widgets\PatientFormDialog.ui" />
+    <QtUic Include="src\View\Widgets\PatientHistoryDialog.ui" />
+    <QtUic Include="src\View\Widgets\PerioStatusView.ui" />
+    <QtUic Include="src\View\Widgets\PerioView.ui" />
+    <QtUic Include="src\View\Widgets\ProcedureDialog.ui" />
+    <QtUic Include="src\View\Widgets\ProcedureEditDialog.ui" />
+    <QtUic Include="src\View\Widgets\ProcedureElementDialog.ui" />
+    <QtUic Include="src\View\Widgets\ProcedurePrintSelectDialog.ui" />
+    <QtUic Include="src\View\Widgets\QDento.ui" />
+    <QtUic Include="src\View\Widgets\RecipientEditView.ui" />
+    <QtUic Include="src\View\Widgets\SettingsDialog.ui" />
+    <QtUic Include="src\View\Widgets\TableViewDialog.ui" />
+    <QtUic Include="src\View\Widgets\TabView.ui" />
+    <QtUic Include="src\View\Widgets\WelcomeWidget.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="qDento.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="Translation_bg.ts" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

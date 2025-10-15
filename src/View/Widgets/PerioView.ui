@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PerioViewClass</class>
+ <widget class="QWidget" name="PerioViewClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1243</width>
+    <height>1424</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1243</width>
+    <height>1424</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>PerioView</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>1195</width>
+     <height>801</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="PerioStatusView" name="maxilla"/>
+   <widget class="PerioStatusView" name="mandibula"/>
+  </widget>
+  <widget class="HalfRoundedButton" name="upperButton">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>170</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Upper Teeth</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="HalfRoundedButton" name="lowerButton">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>170</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Lower Teeth</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>10</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bone loss:</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="boneSpin">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>10</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+   </property>
+   <property name="suffix">
+    <string>%</string>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="systemicCheck">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>10</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Systemic factors</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="restoreCheck">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>150</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Comprehensive occlusal reconstruction required</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>40</y>
+     <width>331</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Smoking:</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioSmoke_1">
+        <property name="text">
+         <string>Smoker</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioSmoke_2">
+        <property name="text">
+         <string>Non-Smoker</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="radioSmoke_3">
+        <property name="text">
+         <string>10 cigarettes per day</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioSmoke_4">
+        <property name="text">
+         <string>Up to 20 cigarettes per day</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioSmoke_5">
+        <property name="text">
+         <string>More than 20 cigarettes per day</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="riskLabel">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>1300</y>
+     <width>401</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="PerioStatisticView" name="perioStatistics" native="true">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>1050</y>
+     <width>1121</width>
+     <height>361</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="DateEdit" name="dateEdit">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>170</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>170</y>
+     <width>49</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Date:</string>
+   </property>
+  </widget>
+  <widget class="PatientTileInfo" name="patientInfoTile" native="true">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>20</y>
+     <width>551</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>patientInfoTile</zorder>
+  <zorder>stackedWidget</zorder>
+  <zorder>upperButton</zorder>
+  <zorder>lowerButton</zorder>
+  <zorder>label</zorder>
+  <zorder>boneSpin</zorder>
+  <zorder>systemicCheck</zorder>
+  <zorder>restoreCheck</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>riskLabel</zorder>
+  <zorder>perioStatistics</zorder>
+  <zorder>dateEdit</zorder>
+  <zorder>label_2</zorder>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>PatientTileInfo</class>
+   <extends>QWidget</extends>
+   <header>View/SubWidgets/PatientTileInfo.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>View/uiComponents/DateEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PerioStatusView</class>
+   <extends>QWidget</extends>
+   <header>View/Widgets/PerioStatusView.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HalfRoundedButton</class>
+   <extends>QPushButton</extends>
+   <header>View/uiComponents/HalfRoundedButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PerioStatisticView</class>
+   <extends>QWidget</extends>
+   <header>View/SubWidgets/PerioStatisticView.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

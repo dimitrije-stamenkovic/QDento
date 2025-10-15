@@ -1,0 +1,116 @@
+#include "DbPatientSummary.h"
+#include "Model/Dental/DentalVisit.h"
+#include "Model/Parser.h"
+#include "Model/Dental/PerioStatus.h"
+#include "Database/DbProcedure.h"
+#include "Database/Database.h"
+
+std::vector<TimeFrame> DbPatientSummary::getFrames(long long patientRowId)
+{
+    std::vector<TimeFrame> initialFrames;
+
+    Db db(
+        "SELECT rowid, num, dentist_rowid, date, status FROM dental_visit WHERE patient_rowid=? ORDER BY date ASC"
+    );
+
+    db.bind(1, patientRowId);
+
+    while (db.hasRows())
+    {
+        initialFrames.emplace_back();
+
+        auto& frame = initialFrames.back();
+
+        frame.type = TimeFrameType::InitialAmb;
+        frame.rowid = db.asRowId(0);
+        frame.number = db.asString(1);
+
+        frame.dentist_rowid = db.asRowId(2);
+        frame.date = db.asString(3);
+        Parser::parse(db.asString(4), frame.teeth);
+
+    }
+
+    std::vector<TimeFrame> result;
+
+    //getting procedures
+
+    for (auto& initFrame : initialFrames)
+    {
+        result.push_back(initFrame);
+
+        auto procedures = DbProcedure::getProcedures(initFrame.rowid, db);
+
+        for (size_t i = 0; i < procedures.size(); i++)
+        {
+            if (
+                i == 0 ||
+                procedures[i].date != procedures[i-1].date    
+            ) {
+                result.push_back(result.back());
+                result.back().procedures.clear();
+                result.back().type = TimeFrameType::Procedures;
+            }
+
+            procedures[i].applyProcedure(result.back().teeth);
+            result.back().procedures.push_back(procedures[i]);
+        }
+    }
+
+
+    //getting perio statuses
+
+   db.newStatement("SELECT rowid, dentist_rowid, date, data FROM periostatus WHERE"
+        " patient_rowid = " + std::to_string(patientRowId) +
+        " ORDER BY date ASC"
+       );
+
+    while (db.hasRows())
+    {
+        TimeFrame perioFrame;
+        perioFrame.perioData.rowid = db.asRowId(0);
+        perioFrame.rowid = db.asRowId(0);
+        perioFrame.type = TimeFrameType::Perio;
+        perioFrame.date = db.asString(2);
+        perioFrame.dentist_rowid = db.asRowId(1);
+        perioFrame.perioData.date = perioFrame.date;
+        Parser::parse(db.asString(3), perioFrame.perioData);
+
+        if (result.empty()) {
+            result.push_back(perioFrame);
+            continue;
+        }
+
+        for (size_t i = 0; i < result.size(); i++)
+        {
+
+            if (perioFrame.date < result[i].date || i == result.size() - 1)
+            {
+                if (i)  perioFrame.teeth = result[i - 1].teeth; //getting previous status
+
+                if (i == result.size() - 1) result.push_back(perioFrame);
+                else result.insert(result.begin() + i, perioFrame);
+
+                break;
+            }
+
+        }
+    }
+
+    //copying perio data to all other time frames
+    TimeFrame* lastPerioFrame{ nullptr };
+
+    for (size_t i = 0; i < result.size(); i++)
+    {
+        if (result[i].type == TimeFrameType::Perio) {
+            lastPerioFrame = &result[i];
+            continue;
+        }
+
+        if (lastPerioFrame) {
+            result[i].perioData = lastPerioFrame->perioData;
+        }
+    }
+
+    return result;
+}

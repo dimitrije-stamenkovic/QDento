@@ -1,0 +1,89 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icon_BOP.png</file>
+        <file>icon_checked.png</file>
+        <file>icon_note.png</file>
+        <file>icon_periosheet.png</file>
+        <file>icon_print.png</file>
+        <file>icon_save.png</file>
+        <file>icon_settings.png</file>
+        <file>icon_sheet.png</file>
+        <file>icon_tristate.png</file>
+        <file>icon_user.png</file>
+        <file>icon_open.png</file>
+        <file>icon_invoice.png</file>
+        <file>icon_add.png</file>
+        <file>icon_edit.png</file>
+        <file>icon_remove.png</file>
+        <file>icon_apply.png</file>
+        <file>nextMonth.png</file>
+        <file>nextYear.png</file>
+        <file>prevMonth.png</file>
+        <file>prevYear.png</file>
+        <file>icon_downArrow.png</file>
+        <file>icon_db.png</file>
+        <file>icon_bday.png</file>
+        <file>icon_question.png</file>
+        <file>icon_history.png</file>
+        <file>icon_copy.png</file>
+        <file>icon_fav.png</file>
+        <file>icon_favgray.png</file>
+        <file>icon_favhover.png</file>
+        <file>icon_notes.png</file>
+        <file>icon_calendar.png</file>
+        <file>icon_bell.png</file>
+        <file>icon_bell_notify.png</file>
+        <file>icon_donate.png</file>
+        <file>qDento.png</file>
+        <file>icon_sync.png</file>
+        <file>icon_app.png</file>
+    </qresource>
+    <qresource prefix="/tooth">
+        <file>tooth_approximal.png</file>
+        <file>tooth_bridgeCon.png</file>
+        <file>tooth_bridgeSep.png</file>
+        <file>tooth_buccal.png</file>
+        <file>tooth_cervical.png</file>
+        <file>tooth_common.png</file>
+        <file>tooth_crown.png</file>
+        <file>tooth_endo.png</file>
+        <file>tooth_fiberBridge.png</file>
+        <file>tooth_lesion.png</file>
+        <file>tooth_lingual.png</file>
+        <file>tooth_occlusal.png</file>
+        <file>tooth_perio.png</file>
+        <file>tooth_post.png</file>
+        <file>tooth_roots.png</file>
+        <file>tooth_teeth.png</file>
+        <file>tooth_false.png</file>
+        <file>tooth_calculus.png</file>
+        <file>tooth_stripes.png</file>
+        <file>tooth_resorption.png</file>
+    </qresource>
+    <qresource prefix="/style">
+        <file>dateEditStyle.qss</file>
+    </qresource>
+    <qresource prefix="/db">
+        <file>dbSchema.txt</file>
+    </qresource>
+    <qresource prefix="/zodiac">
+        <file>zodiac_0.png</file>
+        <file>zodiac_1.png</file>
+        <file>zodiac_2.png</file>
+        <file>zodiac_3.png</file>
+        <file>zodiac_4.png</file>
+        <file>zodiac_5.png</file>
+        <file>zodiac_6.png</file>
+        <file>zodiac_7.png</file>
+        <file>zodiac_8.png</file>
+        <file>zodiac_9.png</file>
+        <file>zodiac_10.png</file>
+        <file>zodiac_11.png</file>
+    </qresource>
+    <qresource prefix="/other">
+        <file>splash.png</file>
+    </qresource>
+    <qresource prefix="/migrations">
+        <file>db_migrateTo1.txt</file>
+    </qresource>
+</RCC>
