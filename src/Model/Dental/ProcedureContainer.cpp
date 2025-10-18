@@ -44,9 +44,7 @@ void ProcedureContainer::replaceProcedure(const Procedure& p, int idx)
 {
     if (idx < 0 || idx >= m_proc.size()) return;
 
-    m_proc.erase(m_proc.begin() + idx);
-
-    addProcedure(p);
+    m_proc[idx] = p;
 
 }
 
