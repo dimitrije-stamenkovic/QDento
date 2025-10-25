@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <set>
 #include <optional>
+#include <vector>
 #include "Model/UserStructs.h"
 
 namespace DbDentist
