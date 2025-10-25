@@ -31,7 +31,7 @@ struct RestorationData
     bool post{ false };
 
     bool isValid() const {
-         return std::find(surfaces.begin(), surfaces.end(), true) != surfaces.end();
+         return std::ranges::find(surfaces.begin(), surfaces.end(), true) != surfaces.end();
     }
 };
 
