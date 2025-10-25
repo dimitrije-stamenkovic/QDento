@@ -29,7 +29,7 @@
       </size>
      </property>
      <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
+      <enum>QFrame::Shape::NoFrame</enum>
      </property>
      <widget class="LineEdit" name="addressEdit">
       <property name="geometry">
@@ -86,14 +86,14 @@
        </rect>
       </property>
       <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::UpDownArrows</enum>
+       <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
       </property>
       <property name="showGroupSeparator" stdset="0">
        <bool>false</bool>
       </property>
       <property name="maximumDateTime">
        <datetime>
-        <hour>7</hour>
+        <hour>23</hour>
         <minute>59</minute>
         <second>59</second>
         <year>9999</year>
@@ -107,6 +107,9 @@
         <month>1</month>
         <day>1</day>
        </date>
+      </property>
+      <property name="displayFormat">
+       <string>d/M/yyyy</string>
       </property>
       <property name="calendarPopup">
        <bool>true</bool>
