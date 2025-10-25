@@ -22,6 +22,7 @@ RESOURCES += \
 HEADERS += \
     include/json/json-forwards.h \
     include/json/json.h \
+    include/json/json.cpp \
     include/sqLite3/sqlite3.h \
     include/sqLite3/sqlite3ext.h \
     src/Database/Database.h \
